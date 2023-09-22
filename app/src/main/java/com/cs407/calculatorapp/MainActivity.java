@@ -30,8 +30,12 @@ public class MainActivity extends AppCompatActivity {
     public void division(View view) {
         EditText num1 = (EditText) findViewById(R.id.numberOne);
         EditText num2 = (EditText) findViewById(R.id.numberTwo);
-        float solution = Integer.parseInt(num1.getText().toString()) / Integer.parseInt(num2.getText().toString());
-        goToActivity(String.valueOf(solution));
+        if (Integer.parseInt(num2.getText().toString()) == 0) {
+            goToActivity("Cannot divide by zero");
+        } else {
+            float solution = Integer.parseInt(num1.getText().toString()) / Integer.parseInt(num2.getText().toString());
+            goToActivity(String.valueOf(solution));
+        }
     }
     public void goToActivity(String s) {
         Intent intent = new Intent(this, CalculatorActivity.class);
